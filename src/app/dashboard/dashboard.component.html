@@ -1,0 +1,10 @@
+<header> Hello, {{selectedTraveler.name}}. </header>
+<app-trip></app-trip>
+<div>
+    <!-- <div *ngFor="let traveler of travelers">
+        {{traveler.id}} {{traveler.name}}
+    </div> -->
+    <div *ngFor="let trip of trips">
+        {{trip.date}}
+    </div>
+</div>
