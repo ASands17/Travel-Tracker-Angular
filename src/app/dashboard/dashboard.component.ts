@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   public trips: Trip[];
   public destinations: Destination[];
   public selectedTraveler: Traveler;
+  public isLoading: boolean;
 
   constructor(
     private _travelersService: TravelersService, 
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
     this._travelersService.getTravelers()
     //& Next block
       .subscribe((res) => {
-        console.log("here", res)
+        // console.log("here", res)
         this.travelers = res.travelers;
       },
     //& Error block
@@ -39,7 +40,6 @@ export class DashboardComponent implements OnInit {
     //& Complete block
       () => {
         this.getRandomTraveler();
-        console.log("final", this.selectedTraveler)
       }
       );
 
@@ -62,8 +62,9 @@ export class DashboardComponent implements OnInit {
     console.log("This is the complete block")
   }
 
-  public getRandomTraveler() {
-    this.selectedTraveler = this.travelers[Math.floor(Math.random() * this.travelers.length)]
-    console.log("SELECTED ITEM", this.selectedTraveler)
+  public getRandomTraveler(): void {
+      this.selectedTraveler = this.travelers[Math.floor(Math.random() * this.travelers.length)]
+      this.isLoading = true;
+      console.log("SELECTED ITEM", this.selectedTraveler)
   }
 }

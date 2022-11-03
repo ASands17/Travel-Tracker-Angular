@@ -1,4 +1,4 @@
-<header> Hello, {{selectedTraveler.name}}. </header>
+<header *ngIf="isLoading === true"> Hello, {{selectedTraveler.name}}. </header>
 <app-trip></app-trip>
 <div>
     <!-- <div *ngFor="let traveler of travelers">
